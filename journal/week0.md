@@ -5,7 +5,7 @@
 ## Install AWS CLI
 
 I installed the AWS CLI locally on WSL (Windows Subsystem for Linux).
-Here, I show that I have the CLI installed
+Here, I show that I have the CLI installed.
 
 ![awscli](https://user-images.githubusercontent.com/125153369/219493838-fde90a87-cc98-4af9-a4cd-0838558cd8c7.PNG)
 
