@@ -17,6 +17,7 @@ I made two budgets, one for zero-spend, and the other to test out threshold aler
 
 ## Recreate Logical Architectural Diagram
 
-https://lucid.app/lucidchart/59a955a3-54d5-4417-8987-415cfd056443/edit?viewport_loc=-566%2C-198%2C3328%2C1598%2C0_0&invitationId=inv_ab5a21f6-2675-4384-a1aa-f7af89d66525
+![logicaldiagram](https://user-images.githubusercontent.com/125153369/219496608-788620de-439e-47bf-aec4-9bfc846be21a.PNG)
 
 [Link to Lucid Charts Diagram](https://lucid.app/lucidchart/59a955a3-54d5-4417-8987-415cfd056443/edit?viewport_loc=-566%2C-198%2C3328%2C1598%2C0_0&invitationId=inv_ab5a21f6-2675-4384-a1aa-f7af89d66525)
+
