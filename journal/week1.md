@@ -4,10 +4,11 @@
 
 In this week, we worked with containerizing the Cruddur application using Docker.
 
-# Backend
+## Backend
 
 1. Make sure flask is installed in gitpod
-    pip install flask
+```pip install flask
+```
 2. Change directories to backend
     cd backend-flask
 3. Set env variables for frontend and backend urls
@@ -16,7 +17,7 @@ In this week, we worked with containerizing the Cruddur application using Docker
 4. Run the flask application
     python3 -m flask run --host=0.0.0.0 --port=4567
 
-# Create Dockerfile for Backend
+## Create Dockerfile for Backend
 
 The following script was used to containerize the backend
 
@@ -41,7 +42,7 @@ The following commands were used to build and run the application:
     docker run --rm -p 4567:4567 -it backend-flask
     
     
-# Frontend Dockerfile
+## Frontend Dockerfile
 
 Before building the Dockerfile for the frontend, npm install is required
 
@@ -65,7 +66,7 @@ Build/Run Frontend Dockerfile
     docker build -t frontend-react-js ./frontend-react-js 
     docker run -p 3001:3001 -d frontend-react-js
     
-# Docker Compose / Multiple Containers
+## Docker Compose / Multiple Containers
 
 In the root, we created a Dockerfile to run multiple containers simultaneously.
 This file includes installation scripts for Postgres and AWS DynamoDB locally.
@@ -140,7 +141,7 @@ Postgres Installed  ![postgres](https://user-images.githubusercontent.com/125153
 Docker Images ![docker images](https://user-images.githubusercontent.com/125153369/221335412-d559f66d-03f2-47a7-bfb3-1002fb309da0.PNG)
 
 
-# Adding Notification Feature
+## Adding Notification Feature
 
 ![cruddurnotis](https://user-images.githubusercontent.com/125153369/221335417-d6548290-81b2-428f-915d-01f9c576ac4e.PNG)
 
