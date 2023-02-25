@@ -7,16 +7,25 @@ In this week, we worked with containerizing the Cruddur application using Docker
 ## Backend
 
 1. Make sure flask is installed in gitpod
-```pip install flask
+```
+    pip install flask
+
 ```
 2. Change directories to backend
+```
     cd backend-flask
+
+```
 3. Set env variables for frontend and backend urls
+``` 
     export FRONTEND_URL="*"
     export BACKEND_URL="*"
+```
 4. Run the flask application
+```    
     python3 -m flask run --host=0.0.0.0 --port=4567
 
+```
 ## Create Dockerfile for Backend
 
 The following script was used to containerize the backend
