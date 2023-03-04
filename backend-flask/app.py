@@ -35,6 +35,7 @@ import os
 import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
+import logging
 
 # Initialize tracing and an exporter that can send data to Honeycomb
 provider = TracerProvider()
