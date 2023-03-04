@@ -35,6 +35,8 @@ import os
 import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
+
+#CloudWatc
 import logging
 
 # Initialize tracing and an exporter that can send data to Honeycomb
