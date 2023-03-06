@@ -41,7 +41,7 @@ AWS XRay, which is the in-house distributed tracing system for Amazon Web Servic
 
 ## CloudWatch Logs
 
-We used CloudWatch Logs to monitor the traces sent from the application using XRay.
+CloudWatch Logs was implemented in the application, and a test log was used for confirmation of proper functionality.
 
 ![cloudwatchlogs2](https://user-images.githubusercontent.com/125153369/223211286-5d4b7f71-5e0d-4b3f-aa20-2092748e25a7.PNG)
 
