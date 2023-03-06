@@ -12,8 +12,6 @@ Honeycomb was set up within our application, and mock data was collected:
 
 ![spans](https://user-images.githubusercontent.com/125153369/223208545-4cd517bb-f0ba-40d4-a317-0e01a171f9ba.PNG)
 
-![mulltiplespans](https://user-images.githubusercontent.com/125153369/223208537-b80251d0-6b63-4ea5-9803-b59fc032f434.PNG)
-
 ![query](https://user-images.githubusercontent.com/125153369/223208529-e398b915-5d41-46e0-a160-3a55ff76871e.PNG)
 
 
@@ -44,8 +42,6 @@ AWS XRay, which is the in-house distributed tracing system for Amazon Web Servic
 ## CloudWatch Logs
 
 We used CloudWatch Logs to monitor the traces sent from the application using XRay.
-
-![cloudwatch logs](https://user-images.githubusercontent.com/125153369/223211279-e743acff-eaee-43f1-8bb5-b3d6ba13bfee.PNG)
 
 ![cloudwatchlogs2](https://user-images.githubusercontent.com/125153369/223211286-5d4b7f71-5e0d-4b3f-aa20-2092748e25a7.PNG)
 
