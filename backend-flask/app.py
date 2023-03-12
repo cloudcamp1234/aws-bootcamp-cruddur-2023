@@ -45,8 +45,8 @@ import logging
 from time import strftime
 
 # Configuring Logger to Use CloudWatch-----
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.DEBUG)
+#LOGGER = logging.getLogger(__name__)
+#LOGGER.setLevel(logging.DEBUG)
 #console_handler = logging.StreamHandler()
 #cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
 #LOGGER.addHandler(console_handler)
@@ -96,9 +96,9 @@ cors = CORS(
 #CloudWatch Logging route
 #@app.after_request
 #def after_request(response):
-    #timestamp = strftime('[%Y-%b-%d %H:%M]')
-    #LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
-    #return response
+#   timestamp = strftime('[%Y-%b-%d %H:%M]')
+#   LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+#   return response
 
 #Initialize ROLLBAR
 rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
@@ -159,6 +159,7 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
+@xray_recorder.capture("activities_home")
 def data_home():
   app.logger.debug('AUTH HEADER')
   app.logger.debug(
