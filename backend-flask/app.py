@@ -5,7 +5,8 @@ import os
 import sys
 
 from flask_awscognito import AWSCognitoAuthentication
-from lib.cognito_jwt_token import CognitoJwtToken, TokenVerifyError
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
+
 
 from services.home_activities import *
 from services.notifications_activities import *
@@ -172,9 +173,9 @@ def data_create_message():
 @xray_recorder.capture("activities_home")
 def data_home():
   app.logger.debug(request.headers)
-  access_token = CognitoJwtToken.extract_access_token(request.headers)
+  access_token = extract_access_token(request.headers)
   try:
-    claims = cognito_jwt_token.token.verify(access_token)
+    claims = cognito_jwt_token.verify(access_token)
     app.logger.debug("authenticated")
     app.logger.debug(claims)
     app.logger.debug(claims["username"])
