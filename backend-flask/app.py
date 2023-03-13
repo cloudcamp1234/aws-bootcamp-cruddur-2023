@@ -5,13 +5,7 @@ import os
 import sys
 
 from flask_awscognito import AWSCognitoAuthentication
-from lib.cognito_verification_token import CognitoTokenVerification
-
-cognito_token_verify = CognitoTokenVerification(
-  user_pool_id= os.getenv("AWS_COGNITO_USER_POOL_ID"), 
-  user_pool_client_id= os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"), 
-  region= os.getenv("AWS_DEFAULT_REGION")
-  )
+from lib.cognito_jwt_token import CognitoJwtToken
 
 
 from services.home_activities import *
@@ -82,13 +76,17 @@ tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
+aws_auth = AWSCognitoAuthentication(app)
 
 #app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv('AWS_COGNITO_USER_POOL_ID')
 #app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv('AWS_COGNITO_USER_POOL_CLIENT_ID')
 
+cognito_token_verify = CognitoJwtToken(
+  user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"), 
+  user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"), 
+  region=os.getenv("AWS_DEFAULT_REGION")
+  )
 
-
-aws_auth = AWSCognitoAuthentication(app)
 
 #XRAY--------------
 XRayMiddleware(app, xray_recorder)
