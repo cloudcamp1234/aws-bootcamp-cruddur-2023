@@ -81,7 +81,7 @@ aws_auth = AWSCognitoAuthentication(app)
 #app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv('AWS_COGNITO_USER_POOL_ID')
 #app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv('AWS_COGNITO_USER_POOL_CLIENT_ID')
 
-cognito_token_verify = CognitoJwtToken(
+cognito_jwt_token = CognitoJwtToken(
   user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"), 
   user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"), 
   region=os.getenv("AWS_DEFAULT_REGION")
