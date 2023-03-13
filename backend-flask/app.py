@@ -179,7 +179,7 @@ def data_home():
     app.logger.debug("authenticated")
     app.logger.debug(claims)
     app.logger.debug(claims["username"])
-    data = HomeActivities.run(cognito_user_id=claims["username"])
+    data = HomeActivities.run(cognito_user_id=claims['username'])
     #authenticated request
   except TokenVerifyError as e:
     #unauthenticated request
