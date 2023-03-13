@@ -5,7 +5,7 @@ import os
 import sys
 
 from flask_awscognito import AWSCognitoAuthentication
-from lib.cognito_jwt_token import CognitoJwtToken
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 
 from services.home_activities import *
@@ -76,10 +76,7 @@ tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
-aws_auth = AWSCognitoAuthentication(app)
-
-#app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv('AWS_COGNITO_USER_POOL_ID')
-#app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv('AWS_COGNITO_USER_POOL_CLIENT_ID')
+#aws_auth = AWSCognitoAuthentication(app)
 
 cognito_jwt_token = CognitoJwtToken(
   user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"), 
@@ -178,7 +175,7 @@ def data_home():
   app.logger.debug(request.headers)
   access_token = CognitoJwtToken.extract_access_token(request.headers)
   try:
-    claims = cognito_jwt_token.token_service.verify(access_token)
+    claims = cognito_jwt_token.token.verify(access_token)
     app.logger.debug("authenticated")
     app.logger.debug(claims)
     app.logger.debug(claims["username"])
