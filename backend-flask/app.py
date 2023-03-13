@@ -4,6 +4,14 @@ from flask_cors import CORS, cross_origin
 import os
 import sys
 
+from flask_awscognito import AWSCognitoAuthentication
+from lib.cognito_verification_token import CognitoTokenVerification
+
+cognito_token_verify = CognitoTokenVerification(
+  user_pool_id= os.getenv("AWS_COGNITO_USER_POOL_ID"), 
+  user_pool_client_id= os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"), 
+  region= os.getenv("AWS_DEFAULT_REGION")
+  )
 
 
 from services.home_activities import *
@@ -45,8 +53,8 @@ import logging
 from time import strftime
 
 # Configuring Logger to Use CloudWatch-----
-#LOGGER = logging.getLogger(__name__)
-#LOGGER.setLevel(logging.DEBUG)
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
 #console_handler = logging.StreamHandler()
 #cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
 #LOGGER.addHandler(console_handler)
@@ -73,6 +81,14 @@ tracer = trace.get_tracer(__name__)
 
 
 app = Flask(__name__)
+
+
+#app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv('AWS_COGNITO_USER_POOL_ID')
+#app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv('AWS_COGNITO_USER_POOL_CLIENT_ID')
+
+
+
+aws_auth = AWSCognitoAuthentication(app)
 
 #XRAY--------------
 XRayMiddleware(app, xray_recorder)
@@ -163,7 +179,7 @@ def data_create_message():
 def data_home():
   app.logger.debug('AUTH HEADER')
   app.logger.debug(
-  request.headers.get('Authorization')
+    request.headers.get('Authorization')
   )
   data = HomeActivities.run()
   return data, 200
