@@ -1,6 +1,6 @@
 # Week 3 — Decentralized Authentication
 
-# For this week, the goal was to implement authentication for users of Cruddur by using Amazon Cognito.
+## For this week, the goal was to implement authentication for users of Cruddur by using Amazon Cognito.
 
 The following list shows the major steps taken, as well as highlighting issues found and resolved with troubleshooting.
 
@@ -28,7 +28,7 @@ The following list shows the major steps taken, as well as highlighting issues f
 
 ![successfullsigninafteremailconfirmation](https://user-images.githubusercontent.com/125153369/225110259-8094e3a8-f358-4cb0-8586-798978737af1.PNG)
 
-### CSS Changes
+### CSS Changes & Secret Message for authenticated user
 
 ![csschange](https://user-images.githubusercontent.com/125153369/225110473-f851ae1b-7c1c-4621-aa65-98215aeebe0d.PNG)
 
