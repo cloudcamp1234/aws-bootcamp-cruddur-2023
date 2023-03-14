@@ -20,8 +20,6 @@ The following list shows the major steps taken, as well as highlighting issues f
 
 ![userpool](https://user-images.githubusercontent.com/125153369/225109780-b72d2536-3c1b-40e9-bff3-e20d130c89b4.PNG)
 
-![authenincorrect](https://user-images.githubusercontent.com/125153369/225106570-17cce9c2-03d5-40a9-a638-bc6e1abb775d.PNG)
-
 ### Successfull login with default handle/cognito user  
 
 ![successfull login](https://user-images.githubusercontent.com/125153369/225110156-c335be6e-7ba3-4bb9-af59-54efd1b67f53.PNG)
