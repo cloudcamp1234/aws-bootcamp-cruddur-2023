@@ -24,7 +24,8 @@ The following list shows the major steps taken, as well as highlighting issues f
 
 ![successfull login](https://user-images.githubusercontent.com/125153369/225110156-c335be6e-7ba3-4bb9-af59-54efd1b67f53.PNG)
 
-![successfullsigninafteremailconfirmation](https://user-images.githubusercontent.com/125153369/225110259-8094e3a8-f358-4cb0-8586-798978737af1.PNG)
+![successfullsigninafteremailconfirmation](https://user-images.githubusercontent.com/125153369/226376335-2cd1dd06-2590-4c09-b487-3f1c22ba1919.PNG)
+
 
 ### CSS Changes & Secret Message for authenticated user
 
