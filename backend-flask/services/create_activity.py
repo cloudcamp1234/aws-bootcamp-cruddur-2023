@@ -41,6 +41,11 @@ class CreateActivity:
         'message': message
       }   
     else:
+      expires_at = (now + ttl_offset)
+      uuid = CreateActivity.create_activity(user_handle,message,expires_at)
+
+      object_json = CreateActivity.query_object_activity(uuid)
+      
       model['data'] = {
         'uuid': uuid.uuid4(),
         'display_name': 'Andrew Brown',
@@ -51,7 +56,7 @@ class CreateActivity:
       }
     return model
 
-    def create_activity(user_uuid,message,expires_at):
+    def create_activity(handle,message,expires_at):
       sql = f"""
       INSERT INTO (
         user_uuid,
@@ -59,18 +64,26 @@ class CreateActivity:
         expires_at
       )
       VALUES (
-        "(user_uuid)",
-        "(message)",
-        "(expires_at)"
-      )
+        (SELECT uuid from public.users 
+        WHERE users.handle = %(handle)s 
+        LIMIT 1)
+        %(message)s, 
+        %(expires_at)s, 
+        ) 
+        RETURNING uuid;
       """
-      try:
-        conn = pool.connection()
-        cur = conn.cursor()
-        cur.execute(sql)
-        conn.commit()
-      except Exception as err:
-        print_sql_err(err)
+      uuid = db.query_commit_with_returning_id(sql,
+        handle = handle,
+        message = message,
+        expires_at = expires_at
+      )
+      #try:
+        #conn = pool.connection()
+        #cur = conn.cursor()
+        #cur.execute(sql)
+        #conn.commit()
+      #except Exception as err:
+        #print_sql_err(err)
         #conn.rollback()
 
       query_commit(sql)

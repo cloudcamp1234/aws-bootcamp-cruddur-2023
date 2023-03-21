@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 import json
-from lib.db import pool, query_wrap_array
+from lib.db import db
 
 class HomeActivities:
   def run(cognito_user_id=None):
@@ -13,7 +13,7 @@ class HomeActivities:
       now = datetime.now(timezone.utc).astimezone()
       span.set_attribute("app.now", now.isoformat())
      
-      sql = query_wrap_array("""
+      results = db.query_array_json("""
       SELECT
         activities.uuid,
         users.display_name,
@@ -46,5 +46,7 @@ class HomeActivities:
         #for row in rows:
           #print(row)
 
-    return json[0]
+    return results
     #return rows
+
+    
