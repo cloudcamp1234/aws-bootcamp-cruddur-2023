@@ -1,17 +1,31 @@
 from psycopg_pool import ConnectionPool
 import os
-
+import re
+import sys
+from flask import current_app as app
 
 class Db():
-  def __init__(self):
-    self.init(pool)
+  def _init_(self):
+    self.init_pool()
+
+  def template(name):
+    template_path = os.path.join(app.root_path, "db", "sql",name+'.sql')
+    with open(template_path, "r") as f:
+      template_content  = f.read()
+    return template_content
 
   def init_pool():
     connection_url = os.getenv("CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
   # commit as an insert
   
-  def query_commit(self,sql,params={}):
+  def print_sql(self, title, sql):
+    cyan = '\033[96m'
+    no_color  = '\033[0m'
+    print("\n") 
+    print(f"{cyan}SQL Statement-[{title}]---------{no_color}")
+    print_sql(sql + "\n")
+  def query_commit(self,sql,params):
     self.print_sql('commit with returning',sql)
 
     pattern = r"\bRETURNING\b"
