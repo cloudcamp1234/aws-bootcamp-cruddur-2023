@@ -15,7 +15,7 @@
 
 ### Create RDS DB instance!
 
-[provisionrdsclli](https://user-images.githubusercontent.com/125153369/227349082-c2309bdc-8ece-4e2c-baf3-3e4feff8c175.PNG)
+![provisionrdsclli](https://user-images.githubusercontent.com/125153369/227349082-c2309bdc-8ece-4e2c-baf3-3e4feff8c175.PNG)
 
 ![rdsinstanceconsole](https://user-images.githubusercontent.com/125153369/227350007-152b6aeb-6a3d-4c43-aeb8-e89e24bcdd79.PNG)
 
