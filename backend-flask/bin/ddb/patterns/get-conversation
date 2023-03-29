@@ -13,6 +13,7 @@ if len(sys.argv) == 2:
   if "prod" in sys.argv[1]:
     attrs = {}
 
+message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
 ddb = boto3.client('dynamodb',**attrs)
 table_name = 'cruddur-messages'
 
