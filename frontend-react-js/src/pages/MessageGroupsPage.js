@@ -3,7 +3,7 @@ import React from "react";
 
 import DesktopNavigation  from '../components/DesktopNavigation';
 import MessageGroupFeed from '../components/MessageGroupFeed';
-import checkauth from '../lib/checkauth'
+import checkAuth from '../lib/checkauth'
 
 // [TODO] Authenication
 //import Cookies from 'js-cookie'//

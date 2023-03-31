@@ -54,7 +54,7 @@ const router = createBrowserRouter([
   {
     path: "/messages/new/:handle",
     element: <MessageGroupNewPage />
-  }
+  },
   {
     path: "/messages/:message_group_uuid",
     element: <MessageGroupPage />
