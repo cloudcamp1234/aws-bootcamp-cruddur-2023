@@ -16,5 +16,6 @@ else
     URL=$CONNECTION_URL
 fi
 
-echo "db-schema-load"
+echo "db-seed"
 psql $URL cruddur < $seed_path
+
