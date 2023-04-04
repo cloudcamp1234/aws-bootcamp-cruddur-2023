@@ -14,7 +14,6 @@ class Ddb:
       attrs = {}
     dynamodb = boto3.client('dynamodb',**attrs)
     return dynamodb
-
   def list_message_groups(client,my_user_uuid):
     year = str(datetime.now().year)
     table_name = 'cruddur-messages'
@@ -24,19 +23,17 @@ class Ddb:
       'ScanIndexForward': False,
       'Limit': 20,
       'ExpressionAttributeValues': {
-        ':year' : {'S': year},
+        ':year': {'S': year },
         ':pk': {'S': f"GRP#{my_user_uuid}"}
       }
     }
-    print('query-params:', query_params)
-    print('client:', client)
-
+    print('query-params:',query_params)
+    print(query_params)
     # query the table
     response = client.query(**query_params)
     items = response['Items']
-    items.reverse()
-    
-    print("Items--------", items)
+
+
     results = []
     for item in items:
       last_sent_at = item['sk']['S']
@@ -48,7 +45,6 @@ class Ddb:
         'created_at': last_sent_at
       })
     return results
-
   def list_messages(client,message_group_uuid):
     year = str(datetime.now().year)
     table_name = 'cruddur-messages'
@@ -77,38 +73,36 @@ class Ddb:
         'created_at': created_at
       })
     return results
+  def create_message(client,message_group_uuid, message, my_user_uuid, my_user_display_name, my_user_handle):
+    now = datetime.now(timezone.utc).astimezone().isoformat()
+    created_at = now
+    message_uuid = str(uuid.uuid4())
 
-    def create_message(client,message_group_uuid, message, my_user_uuid, my_user_display_name, my_user_handle):
-        now = datetime.now(timezone.utc).astimezone().isoformat()
-        created_at = now
-        message_uuid = str(uuid.uuid4())
-
-        record = {
-        'pk':   {'S': f"MSG#{message_group_uuid}"},
-        'sk':   {'S': created_at },
-        'message': {'S': message},
-        'message_uuid': {'S': message_uuid},
-        'user_uuid': {'S': my_user_uuid},
-        'user_display_name': {'S': my_user_display_name},
-        'user_handle': {'S': my_user_handle}
-        }
-        # insert the record into the table
-        table_name = 'cruddur-messages'
-        response = client.put_item(
-        TableName=table_name,
-        Item=record
-        )
-        # print the response
-        print(response)
-        return {
-        'message_group_uuid': message_group_uuid,
-        'uuid': my_user_uuid,
-        'display_name': my_user_display_name,
-        'handle':  my_user_handle,
-        'message': message,
-        'created_at': created_at
-        }
-
+    record = {
+      'pk':   {'S': f"MSG#{message_group_uuid}"},
+      'sk':   {'S': created_at },
+      'message': {'S': message},
+      'message_uuid': {'S': message_uuid},
+      'user_uuid': {'S': my_user_uuid},
+      'user_display_name': {'S': my_user_display_name},
+      'user_handle': {'S': my_user_handle}
+    }
+    # insert the record into the table
+    table_name = 'cruddur-messages'
+    response = client.put_item(
+      TableName=table_name,
+      Item=record
+    )
+    # print the response
+    print(response)
+    return {
+      'message_group_uuid': message_group_uuid,
+      'uuid': my_user_uuid,
+      'display_name': my_user_display_name,
+      'handle':  my_user_handle,
+      'message': message,
+      'created_at': created_at
+    }
   def create_message_group(client, message,my_user_uuid, my_user_display_name, my_user_handle, other_user_uuid, other_user_display_name, other_user_handle):
     print('== create_message_group.1')
     table_name = 'cruddur-messages'
