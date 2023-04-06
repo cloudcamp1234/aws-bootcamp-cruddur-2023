@@ -182,9 +182,9 @@ def data_messages(message_group_uuid):
 @app.route("/api/messages", methods=['POST','OPTIONS'])
 @cross_origin()
 def data_create_message():
-  message = request.json['message']
   message_group_uuid   = request.json.get('message_group_uuid',None)
   user_receiver_handle = request.json.get('handle',None)
+  message = request.json['message']
   access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
