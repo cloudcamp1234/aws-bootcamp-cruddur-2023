@@ -11,15 +11,15 @@
     "containerDefinitions": [
       {
         "name": "xray",
-        "image": "public.ecr.aws/xray/aws-xray-daemon" ,
-        "essential": true,
+        "image":"public.ecr.aws/xray/aws-xray-daemon",
+        "essential":true,
         "user": "1337",
         "portMappings": [
-          {
-            "name": "xray",
-            "containerPort": 2000,
-            "protocol": "udp"
-          }
+            {
+              "name": "xray",
+              "containerPort": 2000,
+              "protocol": "udp"
+            }
         ]
       },
       {

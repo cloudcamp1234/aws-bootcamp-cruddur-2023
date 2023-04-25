@@ -20,7 +20,7 @@
               "protocol": "udp"
             }
         ]
-      }
+      },
       {
         "name": "backend-flask",
         "image": "057999555240.dkr.ecr.us-east-1.amazonaws.com/backend-flask",
