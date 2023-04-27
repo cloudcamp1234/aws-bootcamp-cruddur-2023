@@ -6,20 +6,22 @@ services:
     build: ./backend-flask
     ports:
       - "4567:4567"
-    volumes:
-      - ./backend-flask:/backend-flask
     networks:
       - cruddur-net
+    volumes:
+      - ./backend-flask:/backend-flask
+    
   frontend-react-js:
     env_file:
       - frontend-react-js.env
     build: ./frontend-react-js
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend-react-js:/frontend-react-js
     networks:
       - cruddur-net
+    volumes:
+      - ./frontend-react-js:/frontend-react-js
+    
 
   xray-daemon:
     image: "amazon/aws-xray-daemon"
@@ -57,10 +59,11 @@ services:
       - POSTGRES_PASSWORD=password
     ports:
       - '5432:5432'
-    volumes: 
-      - db:/var/lib/postgresql/data
     networks:
       - cruddur-net
+    volumes: 
+      - db:/var/lib/postgresql/data
+   
 # the name flag is a hack to change the default prepend folder
 # name when outputting the image names
 networks: 
